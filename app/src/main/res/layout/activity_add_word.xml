@@ -13,11 +13,11 @@
         android:text="English"
         android:id="@+id/textLabelEn"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="true"
         android:gravity="center|center_horizontal"
         android:layout_alignRight="@+id/textWordEn"
-        android:layout_alignEnd="@+id/textWordEn" />
+        android:layout_alignEnd="@+id/textWordEn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -58,9 +58,50 @@
         android:text="Save"
         android:id="@+id/buttSaveWords"
         android:layout_below="@+id/textWordBg"
+        android:layout_toRightOf="@+id/buttReturnMenu"
+        android:layout_toLeftOf="@+id/buttViewWords"
+        android:layout_toStartOf="@+id/buttViewWords" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:id="@+id/buttReturnMenu"
+        android:layout_alignTop="@+id/buttSaveWords"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Words"
+        android:id="@+id/buttViewWords"
+        android:layout_alignBottom="@+id/buttSaveWords"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/flagText"
+        android:layout_below="@+id/buttSaveWords"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textWordBg"
-        android:layout_alignEnd="@+id/textWordBg" />
+        android:layout_alignRight="@+id/buttSaveWords"
+        android:layout_alignEnd="@+id/buttSaveWords"
+        android:gravity="center_horizontal" />
+
+    TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Menu"
+        android:id="@+id/linkMenu"
+        android:layout_below="@+id/flagText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/flagText"
+        android:layout_alignEnd="@+id/flagText"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

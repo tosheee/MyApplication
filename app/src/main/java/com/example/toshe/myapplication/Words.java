@@ -11,5 +11,25 @@ public class Words {
         this.wordEn = wordEn;
     }
 
+    public Words(){}
 
+    public Words(String wordEn ){
+        
+    }
+
+    public String getWordBg() {
+        return wordBg;
+    }
+
+    public String getWordEn() {
+        return wordEn;
+    }
+
+    public void setWordEn(String wordEn) {
+        this.wordEn = wordEn;
+    }
+
+    public void setWordBg(String wordBg) {
+        this.wordBg = wordBg;
+    }
 }
