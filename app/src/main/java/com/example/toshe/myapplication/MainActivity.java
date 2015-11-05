@@ -10,7 +10,8 @@ import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
-   Button buttAddWord;
+    Button buttAddWord;
+    Button buttViewWords;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +19,23 @@ public class MainActivity extends ActionBarActivity {
 
         buttAddWord = (Button) findViewById(R.id.buttAddWord);
         buttAddWord.setOnClickListener(buttAddWordListener);
+
+        buttViewWords = (Button) findViewById(R.id.buttViewWords);
+        buttViewWords.setOnClickListener(buttViewWordsListener);
     }
 
     private View.OnClickListener buttAddWordListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, AddWordActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener buttViewWordsListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, WordsList.class);
             startActivity(intent);
         }
     };

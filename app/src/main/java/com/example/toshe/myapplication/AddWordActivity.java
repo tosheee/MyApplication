@@ -1,6 +1,8 @@
 package com.example.toshe.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class AddWordActivity extends ActionBarActivity {
@@ -16,7 +19,10 @@ public class AddWordActivity extends ActionBarActivity {
     EditText textWordEn, textWordBg;
     Button buttSaveWords, buttReturMenu, buttViewWords;
     TextView textLabelBg, textLabelEn;
-    WordDb wordDb = new WordDb(this);
+    Context context = this;
+    WordDbHelper wordDbHelper;
+    SQLiteDatabase sqLiteDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,16 +47,19 @@ public class AddWordActivity extends ActionBarActivity {
         public void onClick(View v) {
             String wordEn = textWordEn.getText().toString();
             String wordBg = textWordBg.getText().toString();
+
             if(wordEn.isEmpty()) {
                 textLabelEn.setText("Моля, попълнете полет");
             }else if(wordBg.isEmpty()){
-            textLabelBg.setText("Моля, попълнете полето");
+                textLabelBg.setText("Моля, попълнете полето");
             }else
-            wordDb.createRecord(wordEn, wordBg);
-            Intent intent = new Intent(AddWordActivity.this, AddWordActivity.class);
-            startActivity(intent);
-        }
-    };
+            wordDbHelper = new WordDbHelper(context);
+            sqLiteDatabase = wordDbHelper.getWritableDatabase();
+            wordDbHelper.RecordWord(wordEn, wordBg, sqLiteDatabase);
+            Toast.makeText(getBaseContext(), "Data Saved", Toast.LENGTH_LONG).show();
+            wordDbHelper.close();
+            }
+        };
     private View.OnClickListener buttReturMenuLitener = new View.OnClickListener(){
        public void onClick(View v){
          Intent intent = new Intent(AddWordActivity.this, MainActivity.class);

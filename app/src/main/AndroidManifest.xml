@@ -20,6 +20,10 @@
             android:name=".AddWordActivity"
             android:label="@string/title_activity_add_word" >
         </activity>
+        <activity
+            android:name=".WordListActivity"
+            android:label="@string/title_activity_word_list" >
+        </activity>
     </application>
 
 </manifest>
